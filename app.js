@@ -24,10 +24,14 @@ app.use(express.static('node_modules/webrtc-adapter/out'));
 
 app.use('/lti',require('./lti'));
 
-app.get('/VBC',(req, res)=>{
-    res.render('index');    
+app.get('/teacher',(req, res)=>{
+    res.render('VideoBCTeacher');    
 });
 
+
+app.get('/student',(req, res)=>{
+    res.render('VideoBCStudent');    
+});
 
 server.listen(3000, ()=>{
     console.log('Server stated at port: 3000');

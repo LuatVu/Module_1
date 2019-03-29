@@ -10,7 +10,11 @@ router.post('/',(req, res, next)=>{
 
     provider.valid_request(req, (err, isValid) => {
         if(isValid){            
-            res.redirect(301, '/VBC');        
+            if(provider.body.roles.includes('Instructor') ){
+                res.redirect(301, '/teacher');
+            }else{
+                res.redirect(301, '/student');
+            }            
         }else{
             next(err);
         }
