@@ -71,15 +71,15 @@ document.getElementById('open-room').onclick = function() {
     });
 };
 
-document.getElementById('join-room').onclick = function() {
-    disableInputButtons();
+// document.getElementById('join-room').onclick = function() {
+//     disableInputButtons();
 
-    connection.sdpConstraints.mandatory = {
-        OfferToReceiveAudio: true,
-        OfferToReceiveVideo: true
-    };
-    connection.join(document.getElementById('room-id').value);
-};
+//     connection.sdpConstraints.mandatory = {
+//         OfferToReceiveAudio: true,
+//         OfferToReceiveVideo: true
+//     };
+//     connection.join(document.getElementById('room-id').value);
+// };
 
 // ......................................................
 // ..................RTCMultiConnection Code.............
