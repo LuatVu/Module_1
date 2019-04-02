@@ -25,19 +25,30 @@ app.use(express.static('node_modules/webrtc-screen-capturing'));
 
 app.use('/lti',require('./lti'));
 
+//
 app.get('/teacher',(req, res)=>{
     res.render('VideoBCTeacher');    
 });
 
-
 app.get('/student',(req, res)=>{
     res.render('VideoBCStudent');    
 });
+//---------------
+
+//Chat room
+app.get('/ChatTeacher',(req, res)=>{
+    res.render('VideoConferTeacher');
+});
+
+app.get('/ChatStudent',(req, res)=>{
+    res.render('VideoConferStudent');
+});
+//-----------------
+
 
 server.listen(3000, ()=>{
     console.log('Server stated at port: 3000');
 });
-
 
 ioServer(server).on('connection', function(socket) {
     RTCMultiConnectionServer.addSocket(socket, config);

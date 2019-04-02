@@ -1,13 +1,6 @@
 
 connection.socketMessageEvent = 'video-broadcast-demo';
 
-// connection.session = {
-//     audio: true,
-//     video: true,
-//     oneway: true
-// };
-
-
 connection.videosContainer = document.getElementById('videos-container');
 connection.onstream = function(event) {
     var existing = document.getElementById(event.streamid);

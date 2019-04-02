@@ -1,34 +1,40 @@
+//Video BroadCasting
 var connection = new RTCMultiConnection();
-
-// by default, socket.io server is assumed to be deployed on your own URL
 connection.socketURL = '/';
-
 connection.session = {
     audio: true,
-    video: true,
-    // screen:true,
+    video: true,    
     oneway: true
 };
-
 connection.sdpConstraints.mandatory = {
     OfferToReceiveAudio: false,
     OfferToReceiveVideo: false
 };
+//............................................
 
 
+//ScreenSharing
 var connection_2 = new RTCMultiConnection();
-
-// by default, socket.io server is assumed to be deployed on your own URL
 connection_2.socketURL = '/';
-
 connection_2.session = {
-    // audio: true,
-    // video: true,
     screen:true,
     oneway: true
 };
-
 connection_2.sdpConstraints.mandatory = {
     OfferToReceiveAudio: false,
     OfferToReceiveVideo: false
+};
+//.............................................
+
+
+//VideoConferencing
+var connection_3 = new RTCMultiConnection();
+connection_3.socketURL = '/';
+connection_3.session = {
+    audio:true,
+    video:true
+};
+connection_3.sdpConstraints.mandatory = {
+    OfferToReceiveAudio: true,
+    OfferToReceiveVideo: true
 };

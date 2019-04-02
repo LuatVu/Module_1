@@ -1,0 +1,110 @@
+<!-- Demo version: 2019.01.09 -->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Video Conferencing using RTCMultiConnection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="shortcut icon" href="/demos/logo.png">
+  <link rel="stylesheet" href="/demos/stylesheet.css">
+  <script src="/demos/menu.js"></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="/demos/"><img src="/demos/logo.png" alt="RTCMultiConnection"></a>
+    <a href="/demos/" class="menu-explorer">Menu<img src="/demos/menu-icon.png" alt="Menu"></a>
+    <nav>
+      <li>
+        <a href="/demos/">Home</a>
+      </li>
+      <li>
+        <a href="https://www.rtcmulticonnection.org/docs/getting-started/">Getting Started</a>
+      </li>
+      <li>
+        <a href="https://www.rtcmulticonnection.org/FAQ/">FAQ</a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/playlist?list=PLPRQUXAnRydKdyun-vjKPMrySoow2N4tl">YouTube</a>
+      </li>
+      <li>
+        <a href="https://rtcmulticonnection.herokuapp.com/demos/">Demos</a>
+      </li>
+      <li>
+        <a href="https://github.com/muaz-khan/RTCMultiConnection/wiki">Wiki</a>
+      </li>
+      <li>
+        <a href="https://github.com/muaz-khan/RTCMultiConnection">Github</a>
+      </li>
+    </nav>
+  </header>
+
+  <h1>
+    Video Conferencing using RTCMultiConnection
+    <p class="no-mobile">
+      Multi-user (many-to-many) video chat using mesh networking model.
+    </p>
+  </h1>
+
+  <section class="make-center">
+    <div>
+      <br>
+      <button id="open-room">Open Room</button>      
+      <br>
+    </div>
+    <div id="videos-container" style="margin: 20px 0;"></div>
+
+    <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
+  </section>
+
+<script src="RTCMultiConnection.js"></script>
+<script src="main.js"></script>
+<script src="VideoConferencing.js"></script>
+<script src="adapter.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+document.getElementById('open-room').onclick = function() {
+    document.getElementById('open-room').disabled = true;
+    connection_3.open('VConferencing', function() {
+      console.log(connection_3.sessionid);       
+    });
+};
+
+</script>
+
+  <section>
+    <p>
+      You can write cordova/ionic/phonegap based <a href="https://www.rtcmulticonnection.org/docs/Write-iOS-Apps/" target="_blank">iOS</a> or <a href="https://www.rtcmulticonnection.org/docs/Write-Android-Apps/" target="_blank">Android</a> apps for this demo as well. 
+
+      You can download <a href="https://webrtcweb.com/cordova-apps/video-conferencing/">an open-sourced cordova app</a> both for iOS and Android as well.
+    </p>
+
+    <p>
+      You can run same demo on Safari-11 as well. (both on MacOSX & iOS)
+    </p>
+
+    <p>
+      cordova version of android play-store link:
+
+      <a href="https://play.google.com/store/apps/details?id=rmc3.videoconference" target="_blank">https://play.google.com/store/apps/details?id=rmc3.videoconference</a>
+    </p>
+
+    <p>
+      ionic version of android play-store link:
+
+      <a href="https://play.google.com/store/apps/details?id=com.ionic.conference" target="_blank">https://play.google.com/store/apps/details?id=com.ionic.conference</a>
+    </p>
+
+    <p>
+      Microsoft Edge is also supported.
+    </p>
+  </section>
+
+  <footer>
+    <small id="send-message"></small>
+  </footer>
+
+  <!-- <script src="https://cdn.webrtc-experiment.com/common.js"></script> -->
+</body>
+</html>
