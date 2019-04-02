@@ -49,9 +49,12 @@
   <section class="make-center">
     <!-- <input type="text" id="room-id" value="abcdef" autocorrect=off autocapitalize=off size=20> -->
     <button id="open-room">Open Broadcast</button>
-    <button id="join-room">Close Broadcast</button>    
+    <button id="close-room">Close Broadcast</button>   
+    <button id="screen-sharing">Screen Sharing</button> 
 
-    <div id="videos-container" style="margin: 20px 0;"></div>    
+    <div id="videos-container" style="margin: 20px 0;"></div>  
+    <br/>  
+    <div id="screens-container" style="margin: 20px 0;"></div>
 
     <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
   </section>
@@ -60,30 +63,38 @@
 <script src="main.js"></script>
 <script src="VideoBroadCasting.js"></script>
 <script src="adapter.js"></script>
+<script src="ScreenSharing.js"></script>
+<script src="getScreenId.js"></script>
 <script src="/socket.io/socket.io.js"></script>
+
 
 <script>
 // ......................................................
 // .......................UI Code........................
 // ......................................................
 
-document.getElementById('open-room').onclick = function() {
-    disableInputButtons();
-    connection.open('moodle-thesis', function() {
+document.getElementById('open-room').onclick = function() {    
+    document.getElementById('open-room').disabled = true;
+    connection.open('VBCasting', function() {
         showRoomURL(connection.sessionid);
-    });
+    });    
 };
 // comment-out below line if you do not have your own socket.io server
 // connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
+
+document.getElementById('screen-sharing').onclick = function(){
+  // document.getElementById('screen-sharing').disabled = true;
+  connection_2.open('SSharing', function() {
+       // showRoomURL(connection_2.sessionid);
+       console.log(connection_2.sessionid);       
+  });
+}
+
 
 
 // ..................................
 // ALL below scripts are redundant!!!
 // ..................................
-
-function disableInputButtons() {    
-    document.getElementById('open-room').disabled = true;    
-}
 
 // ......................................................
 // ......................Handling Room-ID................

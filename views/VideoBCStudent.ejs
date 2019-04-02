@@ -50,8 +50,11 @@
     <!-- <input type="text" id="room-id" value="abcdef" autocorrect=off autocapitalize=off size=20> -->
     <!-- <button id="open-room">Open Broadcast</button> -->
     <button id="join-room">Join room</button>    
+    <button id="join-screen-sharing">Join Screen Sharing</button>
 
-    <div id="videos-container" style="margin: 20px 0;"></div>    
+    <div id="videos-container" style="margin: 20px 0;"></div> 
+    <br/>   
+    <div id="screens-container" style="margin: 20px 0;"></div>
 
     <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
   </section>
@@ -60,6 +63,8 @@
 <script src="main.js"></script>
 <script src="VideoBroadCasting.js"></script>
 <script src="adapter.js"></script>
+<script src="ScreenSharing.js"></script>
+<script src="getScreenId.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
@@ -68,22 +73,19 @@
 // ......................................................
 
 document.getElementById('join-room').onclick = function() {
-    disableInputButtons();
+  document.getElementById('join-room').disabled = true;    
 
     connection.sdpConstraints.mandatory = {
         OfferToReceiveAudio: true,
         OfferToReceiveVideo: true
     };
-    connection.join('moodle-thesis');
+    connection.join('VBCasting');
 };
 
-// ......................................................
-// ..................RTCMultiConnection Code.............
-// ......................................................
 
-function disableInputButtons() {            
-    document.getElementById('join-room').disabled = true;    
-}
+document.getElementById('join-screen-sharing').onclick = function() {  
+    connection_2.join('SSharing');
+};
 
 // ......................................................
 // ......................Handling Room-ID................

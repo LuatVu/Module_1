@@ -20,6 +20,7 @@ app.set('views','./views')
 // app.use(express.static('public'));
 app.use(express.static('src'));
 app.use(express.static('node_modules/webrtc-adapter/out'));
+app.use(express.static('node_modules/webrtc-screen-capturing'));
 
 
 app.use('/lti',require('./lti'));
